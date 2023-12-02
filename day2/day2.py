@@ -48,11 +48,8 @@ def solve_p1(input: list[str]):
 
 
 def solve_p2(input: list[str]):
-    games = []
-    id = 0
     sum_power = 0
     for line in input:
-        id += 1
         # process all sets of cubes in a single game
         sets = []
         for set in line.split(": ")[1].split(";"):
@@ -76,19 +73,8 @@ def solve_p2(input: list[str]):
                 max_green = set["green"]
             if set["red"] > max_red:
                 max_red = set["red"]
-        power = max_blue * max_green * max_red
-        games.append(
-            {
-                "id": id,
-                "blue": max_blue,
-                "green": max_green,
-                "red": max_red,
-                "power": power,
-            }
-        )
-        sum_power += power
+        sum_power += max_blue * max_green * max_red
 
-    # What is the sum of the IDs of those games?
     return sum_power
 
 
